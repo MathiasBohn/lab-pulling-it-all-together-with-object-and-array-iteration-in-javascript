@@ -114,3 +114,106 @@ function gameObject() {
         },
     };
 }
+
+// numPointsScored(playerName)
+function numPointsScored(playerName) {
+  let game = gameObject();
+
+  for (let side in game) {
+    let team = game[side];
+    for (let name in team.players) {
+      if (name === playerName) {
+        return team.players[name].points;
+      }
+    }
+  }
+}
+
+// shoeSize(playerName)
+function shoeSize(playerName) {
+  let game = gameObject();
+
+  for (let side in game) {
+    let team = game[side];
+    for (let name in team.players) {
+      if (name === playerName) {
+        return team.players[name].shoe;
+      }
+    }
+  }
+}
+
+// teamColors(teamName)
+function teamColors(teamName) {
+  let game = gameObject();
+
+  for (let side in game) {
+    let team = game[side];
+    if (team.teamName === teamName) {
+      return team.colors;
+    }
+  }
+}
+
+// teamNames()
+function teamNames() {
+  let game = gameObject();
+  let names = [];
+
+  for (let side in game) {
+    names.push(game[side].teamName);
+  }
+
+  return names;
+}
+
+// playerNumbers(teamName)
+function playerNumbers(teamName) {
+  let game = gameObject();
+  let numbers = [];
+
+  for (let side in game) {
+    let team = game[side];
+    if (team.teamName === teamName) {
+      for (let name in team.players) {
+        numbers.push(team.players[name].number);
+      }
+    }
+  }
+
+  return numbers;
+}
+
+// playerStats(playerName)
+function playerStats(playerName) {
+  let game = gameObject();
+
+  for (let side in game) {
+    let team = game[side];
+    for (let name in team.players) {
+      if (name === playerName) {
+        return team.players[name];
+      }
+    }
+  }
+}
+
+// bigShoeRebounds()
+function bigShoeRebounds() {
+  let game = gameObject();
+  let biggestShoe = 0;
+  let rebounds = 0;
+
+  for (let side in game) {
+    let team = game[side];
+    for (let name in team.players) {
+      let player = team.players[name];
+      if (player.shoe > biggestShoe) {
+        biggestShoe = player.shoe;
+        rebounds = player.rebounds;
+      }
+    }
+  }
+
+  return rebounds;
+}
